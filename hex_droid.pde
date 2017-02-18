@@ -43,6 +43,8 @@ int buff = 7;
 boolean alpha = true; 
 boolean UI = true; 
 boolean grow = true; 
+boolean vis = true;
+int clickCount = 0; 
 
 void setup() {
   
@@ -64,12 +66,15 @@ void setup() {
      ;
      
      
-  mPlayer(); 
+  //mPlayer(); 
   //println(21%20); 
   
 }
 
 void draw() {
+  
+  controller(); 
+  
 //Draw the User Interface
   if(UI == true){
     UI(); 
@@ -85,7 +90,15 @@ void draw() {
     mousePressed(); 
   }
 //Draw the Visualizer 
+  if(vis == true){
   vis(); 
+  }
 //println(mouseX, mouseY); 
 
+}
+
+void controller(){
+  UI = true; 
+  vis = false; 
+  
 }
