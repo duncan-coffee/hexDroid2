@@ -1,7 +1,7 @@
 //HexDroid
 //Duncan Harrist 
 
-/////Import Media Player
+///////Import Media Player
 //import android.media.MediaPlayer;
 //import android.content.res.AssetFileDescriptor;
 //import android.content.Context;
@@ -16,39 +16,45 @@
 import controlP5.*; 
 
 ControlP5 cp5; 
-int myColor = color(0,0,0); 
 
-int sliderValue = 100; 
+float Rotation; 
 Slider abc; 
+float Speed; 
+Slider def; 
+
+int sliderWidth = 800; 
+int sliderHeight = 200; 
 
 /////////////////
 PGraphics pg; 
 
 float rotateVar = 0, rotateTemp = 0; 
 float fillVar = 0, fillTemp = 1; 
-float pos = 10, speed = .4; 
-int redVar = 1, blueVar = 1, greenVar = 1; 
+float colorSpeed = 1; 
+float pos = 10; //speed = .4; 
+int redVar = 0, blueVar = 0, greenVar = 0; 
 
 //Toggle Mode
-int border = 115; 
-//int border = 275; 
+//int border = 115; 
+int border = 275; 
 int colorBox = 60; 
 //int colorBox = 150;
 
 int m, m2; 
 int alphaTime, UITime; 
 boolean coolDown = false; 
-int box = 60; 
+//int box = 80;
+int box = 250; 
 int buff = 7; 
-boolean alpha = true; 
-boolean UI = true; 
+boolean alpha = false; 
+boolean UI = false; 
 boolean grow = true; 
 
 void setup() {
   
   //Toggle Mode
-  //fullScreen();
-  size(480,640); 
+  fullScreen();
+  //size(480,640); 
   
   pg = createGraphics(400,200); 
   noStroke();
@@ -56,15 +62,9 @@ void setup() {
   fill(0);
   background(0); 
   
-  cp5 = new ControlP5(this); 
-  cp5.setAutoDraw(false);
-  cp5.addSlider("sliderValue")
-     .setPosition(100,50)
-     .setRange(0,255)
-     ;
+  sliders(); 
      
-     
-  mPlayer(); 
+  //mPlayer(); 
   //println(21%20); 
   
 }
@@ -72,17 +72,19 @@ void setup() {
 void draw() {
 //Draw the User Interface
   if(UI == true){
-    UI(); 
-    instructions(); 
-    //cp5.draw();
+    //UI(); 
+    //instructions(); 
+    cp5.draw();
   }
+  
+  
 //Draw Transparency Layer  
   if(alpha == true){
      opacity(); 
    }
 //Check the Mouse
  if(mousePressed){
-    mousePressed(); 
+   // mousePressed(); 
   }
 //Draw the Visualizer 
   vis(); 

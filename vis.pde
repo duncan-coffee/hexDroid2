@@ -3,18 +3,18 @@ void vis(){
 
   //Check the Postion and Set Speed
   if((pos > border)||(pos < -border)){grow = !grow;}
-  if(grow == true){pos += speed;}
-    else{pos -=speed;}
+  if(grow == true){pos += Speed;}
+    else{pos -=Speed;}
 
   //Fill Color
-  fillVar += fillTemp; 
+  fillVar += colorSpeed; 
   fill(abs(sin((fillVar/100)/redVar))*250,
        abs(sin((fillVar/100)/blueVar))*250,
        abs(sin((fillVar/100)/greenVar))*250); 
   //Translate
   translate(width/2,height/2);
   //Rotate
-  rotateVar += rotateTemp; 
+  rotateVar += Rotation/10; 
   rotate(rotateVar); 
   //Draw Ellipse
   //ellipse(pos-50,pos-50,pos,pos);
