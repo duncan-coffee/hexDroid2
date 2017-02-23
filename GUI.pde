@@ -9,6 +9,8 @@ Slider def;
 int sliderWidth = 350;
 int sliderHeight = 40; 
 
+int fontSize = 20; 
+
 void GUI(){
   cp5 = new ControlP5(this); 
   cp5.setAutoDraw(false);
@@ -17,18 +19,21 @@ void GUI(){
      .setPosition(75,0)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,31.41)
+     //.setFont(createFont("Veranda",fontSize))
      ;
      
   cp5.addSlider("Speed")
      .setPosition(75,sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,2)
+     //.setFont(createFont("Veranda",fontSize))
      ;
      
   cp5.addSlider("colorSpeed")
      .setPosition(75,2*sliderHeight)
      .setSize(sliderWidth,sliderHeight)
-     .setRange(0,15)
+     .setRange(0,12)
+     //.setFont(createFont("Veranda",fontSize))
      ;
      
      cp5.addButton("Red")
@@ -52,14 +57,14 @@ void GUI(){
      .setColorBackground(color(0,0,200))
      ;
      
-     cp5.addButton("alphaBox")
+     cp5.addButton("Alpha")
      .setValue(0)
      .setPosition(3*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,200,200))
      ;
      
-      cp5.addButton("UIBox")
+      cp5.addButton("Mode")
      .setValue(0)
      .setPosition(4*box,height-box)
      .setSize(box,box)
@@ -91,13 +96,14 @@ public void Blue() {
   backClear(); 
 }
 
-public void alphaBox() {
+public void Alpha() {
   alpha = !alpha; 
   backClear(); 
 }
 
-public void UIBox() {
-  GUI = !GUI;  
+public void Mode() {
+  drawMode += 1;  
+  backClear(); 
 }
 
 public void Clear() {

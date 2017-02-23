@@ -3,6 +3,8 @@ float fillVar = 0, colorSpeed = 1;
 float pos = 10, Speed;  
 int redVar = 0, blueVar = 0, greenVar = 0; 
 
+int drawMode = 0; 
+
 void vis(){
 //Draw the Visualizer    
 
@@ -22,10 +24,38 @@ void vis(){
   rotateVar += Rotation/10; 
   rotate(rotateVar); 
   //Draw Ellipse
-  //ellipse(pos-50,pos-50,pos,pos);
-  //ellipse(pos,pos,pos+50,pos+50);
-  //ellipse(pos+50,pos+50,pos,pos);
-  ellipse(pos,pos,pos,pos); 
+  
+  if(drawMode == 1){
+    border = 100; 
+    ellipse(pos,pos,pos,pos); 
+  }
+  
+  if(drawMode == 2){
+    border = 100; 
+    ellipse(pos-50,pos-50,pos,pos);
+    ellipse(pos,pos,pos+50,pos+50);
+    ellipse(pos+50,pos+50,pos,pos);
+  }
+  
+  if(drawMode == 3){
+    border = 150; 
+     for(int b=2; b<20; b+=3){
+   int a=b*2;
+    beginShape();
+      vertex((pos)*colorSpeed/10,(pos+a)*colorSpeed/10);
+      vertex((pos+a)*colorSpeed/10,(pos+b));
+      vertex((pos+a)*colorSpeed/10,pos-a);
+      vertex((pos)*colorSpeed/10,pos-a);
+      vertex((pos-a)*colorSpeed/10,pos-b);
+      vertex((pos-a)*colorSpeed/10,pos+b); 
+    endShape(CLOSE);
+   }
+  }
+  
+  if(drawMode > 3){
+    drawMode = 1;
+    backClear(); 
+  }
 //End of Visualizer 
 
 }

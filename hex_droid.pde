@@ -1,7 +1,6 @@
 //HexDroid
 //Duncan Harrist 
 
-
 //Toggle Mode
 int border = 100; 
 //int border = 275; 
@@ -13,7 +12,6 @@ boolean grow = true;
 boolean GUI = false; 
 
 void setup() {
-  
   //Toggle Mode
   //fullScreen(P2D);
   size(480,640); 
@@ -21,29 +19,17 @@ void setup() {
   smooth(); 
   fill(0);
   background(0); 
-  
   GUI();      
   //mPlayer(); 
 }
 
 void draw() {
-  
-  controller(); 
 //Draw the GUI
   cp5.draw();
-  
 //Draw Transparency Layer  
   if(alpha == true){
      opacity(); 
    }
-//Check the Mouse
- if(mousePressed){
-   // mousePressed(); 
-  }
 //Draw the Visualizer 
-  vis(); 
-}
-
-void controller(){
-  
+  vis();
 }
