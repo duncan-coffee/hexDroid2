@@ -1,4 +1,15 @@
-void sliders(){
+import controlP5.*; 
+ControlP5 cp5; 
+
+Slider abc;
+Slider def; 
+
+//int sliderWidth = 900; 
+//int sliderHeight = 80; 
+int sliderWidth = 350;
+int sliderHeight = 40; 
+
+void GUI(){
   cp5 = new ControlP5(this); 
   cp5.setAutoDraw(false);
   
@@ -20,21 +31,21 @@ void sliders(){
      .setRange(0,15)
      ;
      
-     cp5.addButton("colorA")
+     cp5.addButton("Red")
      .setValue(0)
      .setPosition(0,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,0,0))
      ;
      
-     cp5.addButton("colorB")
+     cp5.addButton("Green")
      .setValue(0)
      .setPosition(box,height-box)
      .setSize(box,box)
      .setColorBackground(color(0,200,0))
      ;
     
-     cp5.addButton("colorC")
+     cp5.addButton("Blue")
      .setValue(0)
      .setPosition(2*box,height-box)
      .setSize(box,box)
@@ -60,23 +71,22 @@ void sliders(){
      .setPosition(5*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(10,10,10))
-     ;
-     
+     ;  
 }
 
 // function colorA will receive changes from 
 // controller with name colorA
-public void colorA() {
+public void Red() {
   redVar++; 
   backClear(); 
 }
 
-public void colorB() {
+public void Green() {
   greenVar++; 
   backClear(); 
 }
 
-public void colorC() {
+public void Blue() {
   blueVar++;  
   backClear(); 
 }
@@ -87,8 +97,7 @@ public void alphaBox() {
 }
 
 public void UIBox() {
-  UI = !UI; 
-  //println(UI); 
+  GUI = !GUI;  
 }
 
 public void Clear() {

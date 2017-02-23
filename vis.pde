@@ -1,3 +1,8 @@
+float rotateVar = 0, Rotation; 
+float fillVar = 0, colorSpeed = 1; 
+float pos = 10, Speed;  
+int redVar = 0, blueVar = 0, greenVar = 0; 
+
 void vis(){
 //Draw the Visualizer    
 
@@ -23,21 +28,4 @@ void vis(){
   ellipse(pos,pos,pos,pos); 
 //End of Visualizer 
 
-
-}
-
-void opacity(){
-  //Draw Transparency Layer
-    fill(abs(sin(fillVar/redVar))*100,
-         abs(sin(fillVar/blueVar))*100,
-         abs(sin(fillVar/greenVar))*100,3); 
-    rect(0, 0, width, height);
-  //End of Trasparency Layer
-}
-
-void backClear(){
-//Redraw the Background
-  background(abs(sin(fillVar/redVar))*250-100,
-             abs(sin(fillVar/blueVar))*250-100,
-             abs(sin(fillVar/greenVar))*250-100);
 }

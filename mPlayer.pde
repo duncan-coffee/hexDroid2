@@ -1,3 +1,15 @@
+///////Import Media Player
+//import android.media.MediaPlayer;
+//import android.content.res.AssetFileDescriptor;
+//import android.content.Context;
+//import android.app.Activity;
+
+//MediaPlayer mp;
+//Context context; 
+//Activity act;
+//AssetFileDescriptor afd;
+/////////////////
+
 void mPlayer(){
 
 //Initialize Media Player
@@ -15,7 +27,5 @@ void mPlayer(){
   
 //  mp.start();
 //  mp.setLooping(true);
-
-
   //End of Media Player 
 }
