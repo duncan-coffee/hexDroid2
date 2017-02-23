@@ -2,24 +2,20 @@ void sliders(){
   cp5 = new ControlP5(this); 
   cp5.setAutoDraw(false);
   
-  PFont pfont = createFont("Arial", 8, false);
-  ControlFont font = new ControlFont(pfont);
-  cp5 = new ControlP5(this, font);
-  
   cp5.addSlider("Rotation")
-     .setPosition(width/2-box,0)
+     .setPosition(75,0)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,31.41)
      ;
      
   cp5.addSlider("Speed")
-     .setPosition(width/2-box,sliderHeight)
+     .setPosition(75,sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,2)
      ;
      
   cp5.addSlider("colorSpeed")
-     .setPosition(width/2-box,2*sliderHeight)
+     .setPosition(75,2*sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,15)
      ;
@@ -72,23 +68,27 @@ void sliders(){
 // controller with name colorA
 public void colorA() {
   redVar++; 
+  backClear(); 
 }
 
 public void colorB() {
   greenVar++; 
+  backClear(); 
 }
 
 public void colorC() {
   blueVar++;  
+  backClear(); 
 }
 
 public void alphaBox() {
   alpha = !alpha; 
+  backClear(); 
 }
 
 public void UIBox() {
   UI = !UI; 
-  println(UI); 
+  //println(UI); 
 }
 
 public void Clear() {

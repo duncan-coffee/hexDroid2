@@ -2,15 +2,15 @@
 //Duncan Harrist 
 
 ///////Import Media Player
-//import android.media.MediaPlayer;
-//import android.content.res.AssetFileDescriptor;
-//import android.content.Context;
-//import android.app.Activity;
+import android.media.MediaPlayer;
+import android.content.res.AssetFileDescriptor;
+import android.content.Context;
+import android.app.Activity;
 
-//MediaPlayer mp;
-//Context context; 
-//Activity act;
-//AssetFileDescriptor afd;
+MediaPlayer mp;
+Context context; 
+Activity act;
+AssetFileDescriptor afd;
 /////////////////
 
 import controlP5.*; 
@@ -22,8 +22,8 @@ Slider abc;
 float Speed; 
 Slider def; 
 
-int sliderWidth = 800; 
-int sliderHeight = 200; 
+int sliderWidth = 900; 
+int sliderHeight = 80; 
 
 /////////////////
 PGraphics pg; 
@@ -44,7 +44,7 @@ int m, m2;
 int alphaTime, UITime; 
 boolean coolDown = false; 
 //int box = 80;
-int box = 250; 
+int box = 200; 
 int buff = 7; 
 boolean alpha = false; 
 boolean UI = false; 
@@ -53,7 +53,7 @@ boolean grow = true;
 void setup() {
   
   //Toggle Mode
-  fullScreen();
+  fullScreen(P2D);
   //size(480,640); 
   
   pg = createGraphics(400,200); 
@@ -64,7 +64,7 @@ void setup() {
   
   sliders(); 
      
-  //mPlayer(); 
+  mPlayer(); 
   //println(21%20); 
   
 }
