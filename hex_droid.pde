@@ -2,15 +2,15 @@
 //Duncan Harrist 
 
 ///////Import Media Player
-import android.media.MediaPlayer;
-import android.content.res.AssetFileDescriptor;
-import android.content.Context;
-import android.app.Activity;
+//import android.media.MediaPlayer;
+//import android.content.res.AssetFileDescriptor;
+//import android.content.Context;
+//import android.app.Activity;
 
-MediaPlayer mp;
-Context context; 
-Activity act;
-AssetFileDescriptor afd;
+//MediaPlayer mp;
+//Context context; 
+//Activity act;
+//AssetFileDescriptor afd;
 /////////////////
 
 import controlP5.*; 
@@ -22,8 +22,10 @@ Slider abc;
 float Speed; 
 Slider def; 
 
-int sliderWidth = 900; 
-int sliderHeight = 80; 
+//int sliderWidth = 900; 
+//int sliderHeight = 80; 
+int sliderWidth = 350;
+int sliderHeight = 40; 
 
 /////////////////
 PGraphics pg; 
@@ -35,16 +37,16 @@ float pos = 10; //speed = .4;
 int redVar = 0, blueVar = 0, greenVar = 0; 
 
 //Toggle Mode
-//int border = 115; 
-int border = 275; 
+int border = 100; 
+//int border = 275; 
 int colorBox = 60; 
 //int colorBox = 150;
 
 int m, m2; 
 int alphaTime, UITime; 
 boolean coolDown = false; 
-//int box = 80;
-int box = 200; 
+int box = 80;
+//int box = 200; 
 int buff = 7; 
 boolean alpha = false; 
 boolean UI = false; 
@@ -55,8 +57,8 @@ int clickCount = 0;
 void setup() {
   
   //Toggle Mode
-  fullScreen(P2D);
-  //size(480,640); 
+  //fullScreen(P2D);
+  size(480,640); 
   
   pg = createGraphics(400,200); 
   noStroke();
@@ -101,6 +103,6 @@ void draw() {
 
 void controller(){
   UI = true; 
-  vis = false; 
+  //vis = false; 
   
 }

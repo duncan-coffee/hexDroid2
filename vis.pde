@@ -17,10 +17,10 @@ void vis(){
   rotateVar += Rotation/10; 
   rotate(rotateVar); 
   //Draw Ellipse
-  ellipse(pos-50,pos-50,pos,pos);
-  ellipse(pos,pos,pos+50,pos+50);
-  ellipse(pos+50,pos+50,pos,pos);
-  //ellipse(pos,pos,pos,pos); 
+  //ellipse(pos-50,pos-50,pos,pos);
+  //ellipse(pos,pos,pos+50,pos+50);
+  //ellipse(pos+50,pos+50,pos,pos);
+  ellipse(pos,pos,pos,pos); 
 //End of Visualizer 
 
 
