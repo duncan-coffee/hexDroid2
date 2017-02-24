@@ -4,10 +4,10 @@ ControlP5 cp5;
 Slider abc;
 Slider def; 
 
-//int sliderWidth = 900; 
-//int sliderHeight = 80; 
-int sliderWidth = 350;
-int sliderHeight = 40; 
+int sliderWidth = 900; 
+int sliderHeight = 80; 
+//int sliderWidth = 350;
+//int sliderHeight = 40; 
 
 int fontSize = 20; 
 
@@ -19,21 +19,21 @@ void GUI(){
      .setPosition(75,0)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,31.41)
-     //.setFont(createFont("Veranda",fontSize))
+     .setFont(createFont("Veranda",fontSize))
      ;
      
   cp5.addSlider("Speed")
      .setPosition(75,sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,2)
-     //.setFont(createFont("Veranda",fontSize))
+     .setFont(createFont("Veranda",fontSize))
      ;
      
   cp5.addSlider("colorSpeed")
      .setPosition(75,2*sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,12)
-     //.setFont(createFont("Veranda",fontSize))
+     .setFont(createFont("Veranda",fontSize))
      ;
      
      cp5.addButton("Red")
@@ -41,6 +41,7 @@ void GUI(){
      .setPosition(0,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,0,0))
+     .setFont(createFont("Veranda",fontSize))
      ;
      
      cp5.addButton("Green")
@@ -48,6 +49,7 @@ void GUI(){
      .setPosition(box,height-box)
      .setSize(box,box)
      .setColorBackground(color(0,200,0))
+     .setFont(createFont("Veranda",fontSize))
      ;
     
      cp5.addButton("Blue")
@@ -55,6 +57,7 @@ void GUI(){
      .setPosition(2*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(0,0,200))
+     .setFont(createFont("Veranda",fontSize))
      ;
      
      cp5.addButton("Alpha")
@@ -62,6 +65,7 @@ void GUI(){
      .setPosition(3*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,200,200))
+     .setFont(createFont("Veranda",fontSize))
      ;
      
       cp5.addButton("Mode")
@@ -69,6 +73,7 @@ void GUI(){
      .setPosition(4*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,200,0))
+     .setFont(createFont("Veranda",fontSize))
      ;
      
      cp5.addButton("Clear")
@@ -76,6 +81,7 @@ void GUI(){
      .setPosition(5*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(10,10,10))
+     .setFont(createFont("Veranda",fontSize))
      ;  
 }
 
@@ -108,4 +114,5 @@ public void Mode() {
 
 public void Clear() {
   backClear(); 
+  redVar = 1; greenVar = 1; blueVar = 1; 
 }
