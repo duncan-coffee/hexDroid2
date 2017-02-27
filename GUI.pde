@@ -4,8 +4,14 @@ ControlP5 cp5;
 Slider abc;
 Slider def; 
 
+//Toggle Mode
+//int border = 100; 
+int border = 275; 
+//int box = 80;
+int box = 180; 
+
 int sliderWidth = 900; 
-int sliderHeight = 80; 
+int sliderHeight = 120; 
 //int sliderWidth = 350;
 //int sliderHeight = 40; 
 
@@ -29,7 +35,7 @@ void GUI(){
      .setFont(createFont("Veranda",fontSize))
      ;
      
-  cp5.addSlider("colorSpeed")
+  cp5.addSlider("Color")
      .setPosition(75,2*sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,12)
@@ -83,6 +89,16 @@ void GUI(){
      .setColorBackground(color(10,10,10))
      .setFont(createFont("Veranda",fontSize))
      ;  
+     
+     cp5.addButton("Save")
+     .setBroadcast(false)
+     .setValue(0)
+     .setPosition(0,0)
+     .setSize(75,3*sliderHeight)
+     .setColorBackground(color(10,10,10))
+     .setFont(createFont("Veranda",fontSize))
+     .setBroadcast(true)
+     ;  
 }
 
 // function colorA will receive changes from 
@@ -115,4 +131,8 @@ public void Mode() {
 public void Clear() {
   backClear(); 
   redVar = 1; greenVar = 1; blueVar = 1; 
+}
+
+public void Save() {
+  saveFrame(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/img-####.png");
 }

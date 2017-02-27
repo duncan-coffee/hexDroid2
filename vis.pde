@@ -1,5 +1,5 @@
 float rotateVar = 0, Rotation; 
-float fillVar = 0, colorSpeed = 1; 
+float fillVar = 0, Color = 1; 
 float pos = 10, Speed = 1;  
 int redVar = 0, blueVar = 0, greenVar = 0; 
 
@@ -14,7 +14,7 @@ void vis(){
     else{pos -=Speed;}
 
   //Fill Color
-  fillVar += colorSpeed; 
+  fillVar += Color; 
   fill(abs(sin((fillVar/100)/redVar))*250,
        abs(sin((fillVar/100)/blueVar))*250,
        abs(sin((fillVar/100)/greenVar))*250); 
@@ -41,16 +41,16 @@ void vis(){
   
   if(drawMode == 3){
     //border = 150;
-    border = 400; 
+    border = 350; 
      for(int b=2; b<20; b+=3){
    int a=b*2;
     beginShape();
-      vertex((pos)*colorSpeed/10,(pos+a)*colorSpeed/10);
-      vertex((pos+a)*colorSpeed/10,(pos+b));
-      vertex((pos+a)*colorSpeed/10,pos-a);
-      vertex((pos)*colorSpeed/10,pos-a);
-      vertex((pos-a)*colorSpeed/10,pos-b);
-      vertex((pos-a)*colorSpeed/10,pos+b); 
+      vertex((pos)*Color/12,(pos+a)*Color/12);
+      vertex((pos+a)*Color/12,(pos+b));
+      vertex((pos+a)*Color/12,pos-a);
+      vertex((pos)*Color/12,pos-a);
+      vertex((pos-a)*Color/12,pos-b);
+      vertex((pos-a)*Color/12,pos+b); 
     endShape(CLOSE);
    }
   }

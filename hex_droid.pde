@@ -1,12 +1,6 @@
 //HexDroid
 //Duncan Harrist 
 
-//Toggle Mode
-//int border = 100; 
-int border = 275; 
-//int box = 80;
-int box = 180; 
-
 boolean alpha = false; 
 boolean grow = true; 
 boolean GUI = false; 
@@ -24,12 +18,15 @@ void setup() {
 }
 
 void draw() {
-//Draw the GUI
-  cp5.draw();
+
+//Draw the GUI 
+   cp5.draw();
+  
 //Draw Transparency Layer  
   if(alpha == true){
      opacity(); 
    }
+   
 //Draw the Visualizer 
   vis();
 }
