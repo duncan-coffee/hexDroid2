@@ -7,26 +7,27 @@ boolean GUI = false;
 
 void setup() {
   //Toggle Mode
-  fullScreen(P2D);
-  //size(480,640); 
+  //fullScreen(P2D);
+  size(480,640); 
   noStroke();
   smooth(); 
   fill(0);
   background(0); 
   GUI();      
-  mPlayer(); 
+  //mPlayer(); 
 }
 
 void draw() {
 
+controller(); 
+  
 //Draw the GUI 
    cp5.draw();
-  
+   
 //Draw Transparency Layer  
-  if(alpha == true){
-     opacity(); 
-   }
+  if(alpha){opacity();}
    
 //Draw the Visualizer 
-  vis();
+if (visDraw){vis();}
+
 }

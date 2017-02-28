@@ -26,22 +26,22 @@ void vis(){
   //Draw Ellipse
   
   if(drawMode == 1){
-    //border = 100; 
-    border = 250; 
+    border = 100; 
+    //border = 250; 
     ellipse(pos,pos,pos,pos); 
   }
   
   if(drawMode == 2){
-    //border = 100;
-    border = 250; 
+    border = 75;
+    //border = 250; 
     ellipse(pos-50,pos-50,pos,pos);
     ellipse(pos,pos,pos+50,pos+50);
     ellipse(pos+50,pos+50,pos,pos);
   }
   
   if(drawMode == 3){
-    //border = 150;
-    border = 350; 
+    border = 150;
+    //border = 350; 
      for(int b=2; b<20; b+=3){
    int a=b*2;
     beginShape();

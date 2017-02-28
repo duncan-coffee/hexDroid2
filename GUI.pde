@@ -1,45 +1,52 @@
 import controlP5.*; 
 ControlP5 cp5; 
 
-Slider abc;
-Slider def; 
-
 //Toggle Mode
-//int border = 100; 
-int border = 275; 
-//int box = 80;
-int box = 180; 
+int border = 100; 
+//int border = 275; 
+int box = 80;
+//int box = 180; 
 
-int sliderWidth = 900; 
-int sliderHeight = 120; 
-//int sliderWidth = 350;
-//int sliderHeight = 40; 
+//int sliderWidth = 900; 
+//int sliderHeight = 120; 
+int sliderWidth = 350;
+int sliderHeight = 40; 
 
 int fontSize = 20; 
+
+Textarea myTextarea;
 
 void GUI(){
   cp5 = new ControlP5(this); 
   cp5.setAutoDraw(false);
   
+  PFont pfont = createFont("Veranda",20,true); 
+  ControlFont font = new ControlFont(pfont,20);
+  
+  Group g1 = cp5.addGroup("g1");
+  
   cp5.addSlider("Rotation")
      .setPosition(75,0)
      .setSize(sliderWidth,sliderHeight)
-     .setRange(0,31.41)
-     .setFont(createFont("Veranda",fontSize))
+     .setRange(0,6.666*PI)
+     .setFont(font)
+     .setGroup(g1)
      ;
      
   cp5.addSlider("Speed")
      .setPosition(75,sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,2)
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1)
      ;
      
   cp5.addSlider("Color")
      .setPosition(75,2*sliderHeight)
      .setSize(sliderWidth,sliderHeight)
      .setRange(0,12)
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1)
      ;
      
      cp5.addButton("Red")
@@ -47,7 +54,8 @@ void GUI(){
      .setPosition(0,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,0,0))
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1)
      ;
      
      cp5.addButton("Green")
@@ -55,7 +63,8 @@ void GUI(){
      .setPosition(box,height-box)
      .setSize(box,box)
      .setColorBackground(color(0,200,0))
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1)
      ;
     
      cp5.addButton("Blue")
@@ -63,7 +72,8 @@ void GUI(){
      .setPosition(2*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(0,0,200))
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1)
      ;
      
      cp5.addButton("Alpha")
@@ -71,7 +81,8 @@ void GUI(){
      .setPosition(3*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,200,200))
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1)
      ;
      
       cp5.addButton("Mode")
@@ -79,7 +90,8 @@ void GUI(){
      .setPosition(4*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(200,200,0))
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1)
      ;
      
      cp5.addButton("Clear")
@@ -87,7 +99,8 @@ void GUI(){
      .setPosition(5*box,height-box)
      .setSize(box,box)
      .setColorBackground(color(10,10,10))
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
+     .setGroup(g1) 
      ;  
      
      cp5.addButton("Save")
@@ -96,9 +109,36 @@ void GUI(){
      .setPosition(0,0)
      .setSize(75,3*sliderHeight)
      .setColorBackground(color(10,10,10))
-     .setFont(createFont("Veranda",fontSize))
+     .setFont(font)
      .setBroadcast(true)
+     .setGroup(g1)
      ;  
+     
+     cp5.addBang("bang")
+       .setPosition(width/2-25, height-150)
+       .setSize(40, 40)
+       .setFont(font)
+       .setCaptionLabel("Touch Me")
+       ;
+       
+     cp5.addTextlabel("label")
+        .setText("hexDroid")
+        .setPosition(width/2-75,height/2-100)
+        .setColorValue(250)
+        .setFont(createFont("Veranda",40,true))
+        ;
+        
+        
+  myTextarea = cp5.addTextarea("txt")
+                  .setPosition(width/8,25)
+                  .setSize(400,200)
+                  .setFont(font)
+                  .setLineHeight(22)
+                  .setColor(color(228))
+                  //.setColorBackground(color(100,100,100,50))
+                  //.setColorForeground(color(255,100));
+                  ;
+                  
 }
 
 // function colorA will receive changes from 
@@ -134,5 +174,11 @@ public void Clear() {
 }
 
 public void Save() {
-  saveFrame(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/img-####.png");
+  //saveFrame(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/img-####.png");
+}
+
+public void bang() {
+      state++; 
+      println(state);    
+      
 }
