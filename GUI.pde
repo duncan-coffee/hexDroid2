@@ -12,7 +12,7 @@ int sliderHeight = 120;
 //int sliderWidth = 350;
 //int sliderHeight = 40; 
 
-int fontSize = 40; 
+int fontSize = 50; 
 
 Textarea myTextarea;
 
@@ -20,8 +20,8 @@ void GUI(){
   cp5 = new ControlP5(this); 
   cp5.setAutoDraw(false);
   
-  PFont pfont = createFont("Veranda",40,true); 
-  ControlFont font = new ControlFont(pfont,40);
+  PFont pfont = createFont("Veranda",50,true); 
+  ControlFont font = new ControlFont(pfont,50);
   
   Group g1 = cp5.addGroup("g1");
   
@@ -124,25 +124,35 @@ void GUI(){
      ;  
      
      cp5.addBang("bang")
-       .setPosition(width/2-50,height-400)
-       .setSize(120, 120)
-       .setFont(font)
-       .setCaptionLabel("Next")
+       .setPosition(width*.25,height*.75)
+       .setSize(150, 150)
+       .setColorForeground(color(0,200,200))
+       .setFont(createFont("Veranda",60,true))
+       .setCaptionLabel("Create")
+       .getCaptionLabel().align(ControlP5.CENTER, ControlP5.BOTTOM_OUTSIDE).setPaddingY(10);
+       ;
+       
+       cp5.addBang("bang2")
+       .setPosition(width*.65,height*.75)
+       .setSize(150, 150)
+       .setColorForeground(color(200,0,200))
+       .setFont(createFont("Veranda",60,true))
+       .setCaptionLabel("Relax")
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.BOTTOM_OUTSIDE).setPaddingY(10);
        ;
        
      cp5.addTextlabel("label")
         .setText("hexDroid")
-        .setPosition(width/2-150,height/2-200)
+        .setPosition(width*.25,height*.39)
         .setColorValue(250)
-        .setFont(createFont("Veranda",100,true))
+        .setFont(createFont("Veranda",140,true))
         ;
         
         
   myTextarea = cp5.addTextarea("txt")
                   .setPosition(width/10,50)
-                  .setSize(900,800)
-                  .setFont(createFont("Veranda",60,true))
+                  .setSize(900,1100)
+                  .setFont(createFont("Veranda",70,true))
                   .setLineHeight(70)
                   .setColor(color(228))
                   ;
@@ -190,5 +200,10 @@ public void Save() {
 
 public void bang() {
       state++; 
+      println(state); 
+}
+
+public void bang2() {
+      state = 11; 
       println(state); 
 }
