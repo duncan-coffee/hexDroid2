@@ -1,13 +1,30 @@
-float rotateVar = 0, Rotation; 
-float fillVar = 0, ColorSpeed = 1; 
-float pos = 10, Speed = 1;  
-int redVar = 0, blueVar = 0, greenVar = 0; 
+float rotateVar, Rotation; 
+float fillVar, ColorSpeed; 
+float pos, Speed;  
+int redVar, blueVar, greenVar; 
 
-boolean alpha = false; 
-boolean grow = true; 
-boolean GUI = false; 
+boolean alpha; 
+boolean grow; 
+boolean GUI;
 
-int drawMode = 0; 
+int drawMode;
+float border;
+float border1;
+float border2;
+float border3;
+
+void visInit(){
+    alpha = false; 
+    grow = true; 
+    GUI = false; 
+    border = 1; 
+    border1 = height*.14; 
+    border2 = height*.125; 
+    border3 = width*.33;
+    drawMode = 0; pos = 1; 
+    Speed = 1; ColorSpeed = 1; 
+    redVar = 1; blueVar =1; greenVar = 1; 
+}
 
 void vis(){
 //Draw the Visualizer    
@@ -27,22 +44,19 @@ void vis(){
   rotate(rotateVar); 
   
   if(drawMode == 1){
-    //border = 100; 
-    border = 225; 
+    border = border1;  
     ellipse(pos,pos,pos,pos); 
   }
   
   if(drawMode == 2){
-    //border = 75;
-    border = 200; 
+    border = border2; 
     ellipse(pos-50,pos-50,pos,pos);
     ellipse(pos,pos,pos+50,pos+50);
     ellipse(pos+50,pos+50,pos,pos);
   }
   
   if(drawMode == 3){
-    //border = 150;
-    border = 350; 
+    border = border3; 
      for(int b=2; b<20; b+=3){
    int a=b*2;
     beginShape();

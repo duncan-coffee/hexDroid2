@@ -2,15 +2,16 @@
 //Duncan Harrist 
 
 void setup() {
-  //Toggle Mode
-  fullScreen(P2D);
-  //size(480,640); 
+  fullScreen(P2D); 
   noStroke();
   smooth(); 
   fill(0);
   background(0); 
+  orientation(PORTRAIT); 
+  visInit(); 
   GUI();      
   mPlayer(); 
+  
 }
 
 void draw() {

@@ -1,29 +1,21 @@
 import controlP5.*; 
 ControlP5 cp5; 
 
-//Toggle Mode
-int border = 100; 
-//int border = 275; 
-//int box = 80;
-int box = 180; 
-
-int sliderWidth = 925; 
-int sliderHeight = 120; 
-//int sliderWidth = 350;
-//int sliderHeight = 40; 
-
-int fontSize = 50; 
-
 Textarea myTextarea;
 
 void GUI(){
+  
   cp5 = new ControlP5(this); 
   cp5.setAutoDraw(false);
-  
+ 
   PFont pfont = createFont("Veranda",50,true); 
   ControlFont font = new ControlFont(pfont,50);
   
   Group g1 = cp5.addGroup("g1");
+  
+  int box = int(width/6); 
+  int sliderWidth = int(width*.85); 
+  int sliderHeight = int(height/16); 
   
   cp5.addSlider("Rotation")
      .setPosition(125,0)
@@ -59,7 +51,7 @@ void GUI(){
      .setColorBackground(color(200,0,100))
      .setFont(font)
      .setGroup(g1)
-     .setCaptionLabel("1")
+     .setCaptionLabel(str(redVar))
      ;
      
      cp5.addButton("Green")
@@ -69,7 +61,7 @@ void GUI(){
      .setColorBackground(color(100,200,0))
      .setFont(font)
      .setGroup(g1)
-     .setCaptionLabel("2")
+     .setCaptionLabel(str(greenVar))
      ;
     
      cp5.addButton("Blue")
@@ -79,7 +71,7 @@ void GUI(){
      .setColorBackground(color(0,100,200))
      .setFont(font)
      .setGroup(g1)
-     .setCaptionLabel("3")
+     .setCaptionLabel(str(blueVar))
      ;
      
      cp5.addToggle("Alpha")
@@ -141,15 +133,24 @@ void GUI(){
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.BOTTOM_OUTSIDE).setPaddingY(10);
        ;
        
+       cp5.addBang("Mute")
+        .setPosition(width*.9,height*.05)
+        .setSize(75,75)
+        .setColorForeground(color(200,100,100))
+        //.setBroadcast(false)
+        .setFont(createFont("Veranda",30,true))
+        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.TOP_OUTSIDE).setPaddingY(10);
+        ; 
+       
      cp5.addTextlabel("label")
         .setText("hexDroid")
-        .setPosition(width*.25,height*.39)
+        .setPosition(width*.125,height*.39)
         .setColorValue(250)
-        .setFont(createFont("Veranda",140,true))
+        .setFont(createFont("Veranda",200,true))
         ;
         
         
-  myTextarea = cp5.addTextarea("txt")
+    myTextarea = cp5.addTextarea("txt")
                   .setPosition(width/10,50)
                   .setSize(900,1100)
                   .setFont(createFont("Veranda",70,true))
@@ -161,37 +162,38 @@ void GUI(){
 
 public void Red() {
   redVar++; 
-  backClear(); 
+  cp5.getController("Red").setLabel(str(redVar)); 
+  println(int(width/6)); 
 }
 
 public void Green() {
   greenVar++; 
-  backClear(); 
+  cp5.getController("Green").setLabel(str(greenVar));
 }
 
 public void Blue() {
   blueVar++;  
-  backClear(); 
+  cp5.getController("Blue").setLabel(str(blueVar));  
 }
 
 public void Alpha() {
   alpha = !alpha; 
-  backClear(); 
 }
 
 public void Mode() {
+  pos = 0; 
   drawMode += 1;  
-  backClear(); 
   if(drawMode > 3){
     drawMode = 1;
-    backClear(); 
   }
   cp5.getController("Mode").setLabel("Mode " + drawMode); 
 }
 
 public void Clear() {
-  backClear(); 
   redVar = 1; greenVar = 1; blueVar = 1; 
+  cp5.getController("Red").setLabel("1"); 
+  cp5.getController("Green").setLabel("1"); 
+  cp5.getController("Blue").setLabel("1"); 
 }
 
 public void Save() {
@@ -199,11 +201,9 @@ public void Save() {
 }
 
 public void bang() {
-      state++; 
-      println(state); 
+      state = 1; 
 }
 
 public void bang2() {
       state = 11; 
-      println(state); 
 }

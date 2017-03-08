@@ -8,6 +8,8 @@ MediaPlayer mp;
 Context context; 
 Activity act;
 AssetFileDescriptor afd;
+
+boolean mpExists = true; 
 /////////////////
 
 void mPlayer(){
@@ -28,7 +30,9 @@ void mPlayer(){
   mp.start();
   mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
     public void onCompletion(MediaPlayer mp) {
+      if(Create){
         playSong(); 
+      }else {playSong2();}
     }
 });
   
@@ -50,3 +54,29 @@ public void  playSong(){
             e.printStackTrace();
         }
     }
+    
+public void  playSong2(){
+        // Play song
+        try {
+            mp.reset();
+            afd = context.getAssets().openFd("light3.mp3");//which is in the data folder
+            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.prepare();
+            mp.start();
+            mp.setLooping(true); 
+      
+        }  catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
+public void Mute(){
+  
+  if(mpExists){
+    mp.stop(); 
+    mp.release(); 
+    println("stop"); 
+    mpExists = false; 
+  }  
+  
+}
