@@ -3,6 +3,13 @@ ControlP5 cp5;
 
 Textarea myTextarea;
 
+int boxSide;
+int sliderHorizonWidth;
+int sliderHorizonHeight;
+int saveWidth; 
+int sliderVertWidth; 
+int sliderVertHeight; 
+
 void GUI(){
   
   cp5 = new ControlP5(this); 
@@ -13,22 +20,27 @@ void GUI(){
   
   Group g1 = cp5.addGroup("g1");
   
-  int box = int(width/6); 
-  int sliderWidth = int(width*.85); 
-  int sliderHeight = int(height/16); 
-  
+  boxSide = int(width/6); 
+  sliderHorizonWidth = int(width*.85); 
+  sliderHorizonHeight = int(height/16); 
+  saveWidth = int(width*.116); 
+  sliderVertWidth = boxSide; 
+  sliderVertHeight = int(width*.259); 
+ 
+//Control Sliders - Horizontal 
   cp5.addSlider("Rotation")
      .setPosition(125,0)
-     .setSize(sliderWidth,sliderHeight)
+     .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,6.666*PI)
      .setFont(font)
      .setGroup(g1)
+     //.setColorBackground(color(0,100,0))
      .getCaptionLabel().align(ControlP5.RIGHT, ControlP5.BOTTOM).setPaddingX(20).setPaddingY(20);
      ;
      
   cp5.addSlider("Speed")
-     .setPosition(125,sliderHeight)
-     .setSize(sliderWidth,sliderHeight)
+     .setPosition(125,sliderHorizonHeight)
+     .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,2)
      .setFont(font)
      .setGroup(g1)
@@ -36,48 +48,62 @@ void GUI(){
      ;
      
   cp5.addSlider("ColorSpeed")
-     .setPosition(125,2*sliderHeight)
-     .setSize(sliderWidth,sliderHeight)
+     .setPosition(125,2*sliderHorizonHeight)
+     .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,12)
      .setFont(font)
      .setGroup(g1)
      .getCaptionLabel().align(ControlP5.RIGHT, ControlP5.BOTTOM).setPaddingX(20).setPaddingY(20);
      ;
      
-     cp5.addButton("Red")
-     .setValue(0)
-     .setPosition(0,height-box)
-     .setSize(box,box)
-     .setColorBackground(color(200,0,100))
+//Color Sliders - Vertical      
+     cp5.addSlider("redVar")
+     .setValue(1)
+     .setPosition(0,height-(340))
+     .setSize(boxSide,280)
+     .setRange(0,5)
+     .setColorBackground(color(180,0,10))
+     .setColorForeground(color(250,0,100))
+     .setColorActive(color(250,0,100))
      .setFont(font)
      .setGroup(g1)
-     .setCaptionLabel(str(redVar))
+     .setCaptionLabel("Red")
+     .getValueLabel().setVisible(false)
      ;
      
-     cp5.addButton("Green")
-     .setValue(0)
-     .setPosition(box,height-box)
-     .setSize(box,box)
-     .setColorBackground(color(100,200,0))
+     cp5.addSlider("greenVar")
+     .setValue(1)
+     .setPosition(boxSide,height-(340))
+     .setSize(boxSide,280)
+     .setRange(0,5)
+     .setColorBackground(color(10,180,0))
+     .setColorForeground(color(100,250,0))
+     .setColorActive(color(100,250,0))
      .setFont(font)
      .setGroup(g1)
-     .setCaptionLabel(str(greenVar))
+     .setCaptionLabel("Green")
+     .getValueLabel().setVisible(false)
      ;
     
-     cp5.addButton("Blue")
-     .setValue(0)
-     .setPosition(2*box,height-box)
-     .setSize(box,box)
-     .setColorBackground(color(0,100,200))
+     cp5.addSlider("blueVar")
+     .setValue(1)
+     .setPosition(2*boxSide,height-(340))
+     .setSize(boxSide,280)
+     .setRange(0,5)
+     .setColorBackground(color(0,10,180))
+     .setColorForeground(color(0,100,250))
+     .setColorActive(color(0,100,250))
      .setFont(font)
      .setGroup(g1)
-     .setCaptionLabel(str(blueVar))
+     .setCaptionLabel("Blue")
+     .getValueLabel().setVisible(false)
      ;
-     
+
+//Control Boxes 
      cp5.addToggle("Alpha")
      .setValue(0)
-     .setPosition(3*box,height-box)
-     .setSize(box,box)
+     .setPosition(3*boxSide,height-boxSide-60)
+     .setSize(boxSide,boxSide)
      .setColorBackground(color(200,200,200))
      .setColorActive(color(100,100,100)) 
      .setFont(font)
@@ -87,28 +113,54 @@ void GUI(){
      
       cp5.addButton("Mode")
      .setValue(0)
-     .setPosition(4*box,height-box)
-     .setSize(box,box)
+     .setPosition(4*boxSide,height-boxSide-60)
+     .setSize(boxSide,boxSide)
      .setColorBackground(color(200,200,0))
+     .setColorActive(color(250,250,0))
      .setFont(font)
      .setGroup(g1)
      .setCaptionLabel("Mode")
      ;
      
+     cp5.addToggle("Help")
+     .setBroadcast(false) 
+     .setValue(0)
+     .setPosition(5*boxSide,height-boxSide-60)
+     .setSize(boxSide,boxSide)
+     .setFont(font)
+     .setGroup(g1)
+     .setColorBackground(color(10,10,10))
+     .setColorActive(color(100,100,100)) 
+     .setCaptionLabel("?")
+     .getCaptionLabel().align(ControlP5.CENTER, ControlP5.CENTER);
+     ; 
+     
      cp5.addButton("Clear")
      .setValue(0)
-     .setPosition(5*box,height-box)
-     .setSize(box,box)
-     .setColorBackground(color(10,10,10))
+     .setPosition(0,height-60)
+     .setSize(boxSide*3,60)
+     .setColorBackground(color(60,60,60))
      .setFont(font)
      .setGroup(g1) 
+     .setCaptionLabel("Reset")
      ;  
+     
+     cp5.addButton("Exit")
+     .setBroadcast(false)
+     .setValue(0)
+     .setSize(boxSide*3,60)
+     .setPosition(boxSide*3,height-60)
+     .setColorBackground(color(60,60,60))
+     .setFont(font)
+     .setGroup(g1)
+     .setCaptionLabel("EXIT")
+     ;
      
      cp5.addButton("Save")
      .setBroadcast(false)
      .setValue(0)
      .setPosition(0,0)
-     .setSize(125,3*sliderHeight)
+     .setSize(saveWidth,3*sliderHorizonHeight)
      .setColorBackground(color(0,100,100))
      .setFont(font)
      .setBroadcast(true)
@@ -117,27 +169,26 @@ void GUI(){
      
      cp5.addBang("bang")
        .setPosition(width*.25,height*.75)
-       .setSize(150, 150)
+       .setSize(boxSide, boxSide)
        .setColorForeground(color(0,200,200))
        .setFont(createFont("Veranda",60,true))
        .setCaptionLabel("Create")
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.BOTTOM_OUTSIDE).setPaddingY(10);
        ;
        
-       cp5.addBang("bang2")
+     cp5.addBang("bang2")
        .setPosition(width*.65,height*.75)
-       .setSize(150, 150)
+       .setSize(boxSide, boxSide)
        .setColorForeground(color(200,0,200))
        .setFont(createFont("Veranda",60,true))
        .setCaptionLabel("Relax")
        .getCaptionLabel().align(ControlP5.CENTER, ControlP5.BOTTOM_OUTSIDE).setPaddingY(10);
        ;
        
-       cp5.addBang("Mute")
+     cp5.addBang("Mute")
         .setPosition(width*.9,height*.05)
         .setSize(75,75)
         .setColorForeground(color(200,100,100))
-        //.setBroadcast(false)
         .setFont(createFont("Veranda",30,true))
         .getCaptionLabel().align(ControlP5.CENTER, ControlP5.TOP_OUTSIDE).setPaddingY(10);
         ; 
@@ -149,7 +200,6 @@ void GUI(){
         .setFont(createFont("Veranda",200,true))
         ;
         
-        
     myTextarea = cp5.addTextarea("txt")
                   .setPosition(width/10,50)
                   .setSize(900,1100)
@@ -160,24 +210,23 @@ void GUI(){
                   
 }
 
-public void Red() {
-  redVar++; 
-  cp5.getController("Red").setLabel(str(redVar)); 
-  println(int(width/6)); 
-}
-
-public void Green() {
-  greenVar++; 
-  cp5.getController("Green").setLabel(str(greenVar));
-}
-
-public void Blue() {
-  blueVar++;  
-  cp5.getController("Blue").setLabel(str(blueVar));  
-}
-
 public void Alpha() {
   alpha = !alpha; 
+}
+
+public void Help() {
+  help = !help; 
+  
+  if(help){
+  state = 1; 
+  }  else {
+        state = 2; 
+  }
+}
+
+public void Exit(){
+  Mute(); 
+  exit(); 
 }
 
 public void Mode() {
@@ -190,10 +239,9 @@ public void Mode() {
 }
 
 public void Clear() {
-  redVar = 1; greenVar = 1; blueVar = 1; 
-  cp5.getController("Red").setLabel("1"); 
-  cp5.getController("Green").setLabel("1"); 
-  cp5.getController("Blue").setLabel("1"); 
+  cp5.getController("redVar").setValue(1); 
+  cp5.getController("greenVar").setValue(1); 
+  cp5.getController("blueVar").setValue(1); 
 }
 
 public void Save() {
@@ -201,7 +249,7 @@ public void Save() {
 }
 
 public void bang() {
-      state = 1; 
+      state = 2; 
 }
 
 public void bang2() {

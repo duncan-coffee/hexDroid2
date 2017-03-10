@@ -4,12 +4,14 @@ int t1, t2;
 boolean startTimer2 = true; 
 boolean Create = false; 
 boolean startTimer = true;
+boolean help = false; 
 
 void controller(){
   
 //Title Screen
   if(state == 0){
     visDraw = false; 
+    applyShaderIntro();
     cp5.getGroup("g1").hide();
     myTextarea.hide();
     cp5.getController("label").show(); 
@@ -22,6 +24,9 @@ void controller(){
 //Create Mode
 //Instructions 
    if(state == 1){
+     
+    applyShader();
+
     Create = true; 
     visDraw = true; 
     cp5.getController("bang").hide(); 
@@ -34,45 +39,42 @@ void controller(){
     redVar = 1; greenVar = 1; blueVar = 1;
     cp5.getGroup("g1").show(); 
     
-     if (startTimer){
-      t1 = millis()/1000;
-      startTimer = false; 
-    }
-    
-    t2 = millis()/1000;
-    if(t2-t1 > 3){  
+     
       myTextarea.show(); 
       myTextarea.setPosition(width*.125,height*.3);
-      myTextarea.setText("Use the sliders above to control Rotation, Speed, and Color change Speed."); 
+      myTextarea.setText("Use the sliders above to control Rotation, Speed, and Color change Speed.\n\n"
+                          + "Hit 'Save' to capture images.\n\n"
+                          +"Use the buttons below to add Color, toggle transparency (Alpha),"
+                          + "change the Mode, and Clear the color pallet."
+      ); 
+      fill(250); 
       triangle(width/2,height/3-200,width/2+100,height/3-100,width/2-100,height/3-100); //Top Triangle
-    }
-    
-    if(t2-t1 > 14){
-      myTextarea.setPosition(width*.125,height*.45);
-      myTextarea.setText("Hit 'Save' to capture images."); 
-    }
-    
-    if(t2-t1 > 22){
-      myTextarea.setPosition(width*.125,height*.55);
-      myTextarea.setText("Use the buttons below to add Color, toggle transparency (Alpha), change the Mode, and Clear the color pallet."); 
-      triangle(width/2,2*height/3+300,width/2+100,2*height/3+200,width/2-100,2*height/3+200);  //Bottom Triangle
-    }
-    
-    if(t2-t1 > 36){
-      state++; 
-    }
-    
+      triangle(width/2,2*height/3+200,width/2+100,2*height/3+100,width/2-100,2*height/3+100);  //Bottom Triangle 
+   
   }
 //Main Screen 
    if(state == 2){
     visDraw = true; 
+    applyShader();
+    
     cp5.getGroup("g1").show(); 
     cp5.getController("bang").hide(); 
     cp5.getController("label").hide();
+    cp5.getController("Mute").hide();
+    cp5.getController("bang2").hide();
     myTextarea.hide(); 
     cp5.getController("Rotation").setValue(0.02); 
     cp5.getController("Speed").setValue(1);
+    cp5.getController("redVar").setValue(1); 
+    cp5.getController("greenVar").setValue(1); 
+    cp5.getController("blueVar").setValue(1); 
+    cp5.getController("Help").setBroadcast(true); 
+    cp5.getController("Exit").setBroadcast(true); 
     state++; 
+  }
+  
+  if(state == 3){
+    applyShader();
   }
 
 //Relax Mode

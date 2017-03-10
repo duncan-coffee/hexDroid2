@@ -11,16 +11,15 @@ void setup() {
   visInit(); 
   GUI();      
   mPlayer(); 
-  
 }
 
 void draw() {
+//Instigate Controller 
+controller();  
 
-controller(); 
-  
 //Draw the GUI 
    cp5.draw();
-   
+  
 //Draw Transparency Layer  
   if(alpha){opacity();}
    
