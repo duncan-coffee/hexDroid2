@@ -16,16 +16,17 @@ void GUI(){
   cp5.setAutoDraw(false);
  
   PFont pfont = createFont("Veranda",50,true); 
-  ControlFont font = new ControlFont(pfont,50);
+  //ControlFont font = new ControlFont(pfont,50);
+  ControlFont font = new ControlFont(pfont,20);
   
   Group g1 = cp5.addGroup("g1");
   
-  boxSide = int(width/6); 
-  sliderHorizonWidth = int(width*.85); 
-  sliderHorizonHeight = int(height/16); 
+  boxSide = int(width/18); 
+  sliderHorizonWidth = int(width*.48); 
+  sliderHorizonHeight = int(height/22); 
   saveWidth = int(width*.116); 
   sliderVertWidth = boxSide; 
-  sliderVertHeight = int(width*.259); 
+  sliderVertHeight = int(width*.25); 
  
 //Control Sliders - Horizontal 
   cp5.addSlider("Rotation")
@@ -59,8 +60,8 @@ void GUI(){
 //Color Sliders - Vertical      
      cp5.addSlider("redVar")
      .setValue(1)
-     .setPosition(0,height-(340))
-     .setSize(boxSide,280)
+     .setPosition(0,height-sliderVertHeight)
+     .setSize(boxSide,sliderVertHeight)
      .setRange(0,5)
      .setColorBackground(color(180,0,10))
      .setColorForeground(color(250,0,100))
@@ -73,8 +74,8 @@ void GUI(){
      
      cp5.addSlider("greenVar")
      .setValue(1)
-     .setPosition(boxSide,height-(340))
-     .setSize(boxSide,280)
+     .setPosition(boxSide,height-sliderVertHeight)
+     .setSize(boxSide,sliderVertHeight)
      .setRange(0,5)
      .setColorBackground(color(10,180,0))
      .setColorForeground(color(100,250,0))
@@ -87,8 +88,8 @@ void GUI(){
     
      cp5.addSlider("blueVar")
      .setValue(1)
-     .setPosition(2*boxSide,height-(340))
-     .setSize(boxSide,280)
+     .setPosition(2*boxSide,height-sliderVertHeight)
+     .setSize(boxSide,sliderVertHeight)
      .setRange(0,5)
      .setColorBackground(color(0,10,180))
      .setColorForeground(color(0,100,250))
@@ -225,12 +226,12 @@ public void Help() {
 }
 
 public void Exit(){
-  Mute(); 
-  exit(); 
+ // Mute(); 
+  //exit(); 
 }
 
 public void Mode() {
-  pos = 0; 
+  posX = 0; 
   drawMode += 1;  
   if(drawMode > 3){
     drawMode = 1;
@@ -245,7 +246,7 @@ public void Clear() {
 }
 
 public void Save() {
-  saveFrame(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/img-####.png");
+  //saveFrame(android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_PICTURES).getAbsolutePath() + "/img-####.png");
 }
 
 public void bang() {

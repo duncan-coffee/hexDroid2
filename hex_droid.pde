@@ -2,15 +2,18 @@
 //Duncan Harrist    ///This is a test
 
 void setup() {
-  fullScreen(P2D); 
+  //fullScreen(P2D);
+  
+  size(1200,800); 
+  pixelDensity(displayDensity());
   noStroke();
   smooth(); 
   fill(0);
   background(0); 
-  orientation(PORTRAIT); 
+  //orientation(PORTRAIT); 
   visInit(); 
   GUI();      
-  mPlayer(); 
+  //mPlayer(); 
 }
 
 void draw() {

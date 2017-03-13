@@ -1,4 +1,4 @@
-int state = 0;
+int state = 2;
 boolean visDraw; 
 int t1, t2; 
 boolean startTimer2 = true; 
@@ -11,7 +11,7 @@ void controller(){
 //Title Screen
   if(state == 0){
     visDraw = false; 
-    applyShaderIntro();
+   // applyShaderIntro();
     cp5.getGroup("g1").hide();
     myTextarea.hide();
     cp5.getController("label").show(); 
@@ -25,7 +25,7 @@ void controller(){
 //Instructions 
    if(state == 1){
      
-    applyShader();
+    //applyShader();
 
     Create = true; 
     visDraw = true; 
@@ -34,7 +34,7 @@ void controller(){
     cp5.getController("label").hide();
     cp5.getController("Mute").hide(); 
     cp5.getController("ColorSpeed").setValue(1);
-    pos = 20; 
+    posX = 20; 
     Speed = 0;  Rotation = 0; 
     redVar = 1; greenVar = 1; blueVar = 1;
     cp5.getGroup("g1").show(); 
@@ -55,7 +55,7 @@ void controller(){
 //Main Screen 
    if(state == 2){
     visDraw = true; 
-    applyShader();
+    //applyShader();
     
     cp5.getGroup("g1").show(); 
     cp5.getController("bang").hide(); 
@@ -74,7 +74,7 @@ void controller(){
   }
   
   if(state == 3){
-    applyShader();
+    //applyShader();
   }
 
 //Relax Mode
