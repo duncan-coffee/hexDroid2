@@ -27,7 +27,6 @@ void controller(){
      
     applyShader();
 
-    Create = true; 
     visDraw = true; 
     cp5.getController("bang").hide(); 
     cp5.getController("bang2").hide(); 
@@ -56,7 +55,7 @@ void controller(){
    if(state == 2){
     visDraw = true; 
     applyShader();
-    
+    Create = true; 
     cp5.getGroup("g1").show(); 
     cp5.getController("bang").hide(); 
     cp5.getController("label").hide();

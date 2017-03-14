@@ -9,6 +9,7 @@ int sliderHorizonHeight;
 int saveWidth; 
 int sliderVertWidth; 
 int sliderVertHeight; 
+int gap;
 
 void GUI(){
   
@@ -26,10 +27,11 @@ void GUI(){
   saveWidth = int(width*.116); 
   sliderVertWidth = boxSide; 
   sliderVertHeight = int(width*.259); 
+  gap = int(width*.055); 
  
 //Control Sliders - Horizontal 
   cp5.addSlider("Rotation")
-     .setPosition(125,0)
+     .setPosition(saveWidth,0)
      .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,6.666*PI)
      .setFont(font)
@@ -39,7 +41,7 @@ void GUI(){
      ;
      
   cp5.addSlider("Speed")
-     .setPosition(125,sliderHorizonHeight)
+     .setPosition(saveWidth,sliderHorizonHeight)
      .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,2)
      .setFont(font)
@@ -48,7 +50,7 @@ void GUI(){
      ;
      
   cp5.addSlider("ColorSpeed")
-     .setPosition(125,2*sliderHorizonHeight)
+     .setPosition(saveWidth,2*sliderHorizonHeight)
      .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,12)
      .setFont(font)
@@ -59,7 +61,7 @@ void GUI(){
 //Color Sliders - Vertical      
      cp5.addSlider("redVar")
      .setValue(1)
-     .setPosition(0,height-(340))
+     .setPosition(0,height-(sliderVertHeight + gap))
      .setSize(boxSide,280)
      .setRange(0,5)
      .setColorBackground(color(180,0,10))
@@ -73,7 +75,7 @@ void GUI(){
      
      cp5.addSlider("greenVar")
      .setValue(1)
-     .setPosition(boxSide,height-(340))
+     .setPosition(boxSide,height-(sliderVertHeight + gap))
      .setSize(boxSide,280)
      .setRange(0,5)
      .setColorBackground(color(10,180,0))
@@ -87,7 +89,7 @@ void GUI(){
     
      cp5.addSlider("blueVar")
      .setValue(1)
-     .setPosition(2*boxSide,height-(340))
+     .setPosition(2*boxSide,height-(sliderVertHeight + gap))
      .setSize(boxSide,280)
      .setRange(0,5)
      .setColorBackground(color(0,10,180))
@@ -102,7 +104,7 @@ void GUI(){
 //Control Boxes 
      cp5.addToggle("Alpha")
      .setValue(0)
-     .setPosition(3*boxSide,height-boxSide-60)
+     .setPosition(3*boxSide,height-boxSide-gap)
      .setSize(boxSide,boxSide)
      .setColorBackground(color(200,200,200))
      .setColorActive(color(100,100,100)) 
@@ -113,7 +115,7 @@ void GUI(){
      
       cp5.addButton("Mode")
      .setValue(0)
-     .setPosition(4*boxSide,height-boxSide-60)
+     .setPosition(4*boxSide,height-boxSide-gap)
      .setSize(boxSide,boxSide)
      .setColorBackground(color(200,200,0))
      .setColorActive(color(250,250,0))
@@ -125,7 +127,7 @@ void GUI(){
      cp5.addToggle("Help")
      .setBroadcast(false) 
      .setValue(0)
-     .setPosition(5*boxSide,height-boxSide-60)
+     .setPosition(5*boxSide,height-boxSide-gap)
      .setSize(boxSide,boxSide)
      .setFont(font)
      .setGroup(g1)
@@ -137,8 +139,8 @@ void GUI(){
      
      cp5.addButton("Clear")
      .setValue(0)
-     .setPosition(0,height-60)
-     .setSize(boxSide*3,60)
+     .setPosition(0,height-gap)
+     .setSize(boxSide*3,gap)
      .setColorBackground(color(60,60,60))
      .setFont(font)
      .setGroup(g1) 
@@ -148,8 +150,8 @@ void GUI(){
      cp5.addButton("Exit")
      .setBroadcast(false)
      .setValue(0)
-     .setSize(boxSide*3,60)
-     .setPosition(boxSide*3,height-60)
+     .setSize(boxSide*3,gap)
+     .setPosition(boxSide*3,height-gap)
      .setColorBackground(color(60,60,60))
      .setFont(font)
      .setGroup(g1)

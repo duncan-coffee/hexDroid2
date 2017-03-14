@@ -1,6 +1,6 @@
 //int sideLength = 180;
 //int sideHeight = 280;
-int gap = 60; 
+
 int thickness = 40; 
 
 void rectangle(int posX, int posY, int sideLength, int sideHeight, color fill){
