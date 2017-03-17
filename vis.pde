@@ -1,28 +1,27 @@
 float rotateVar, Rotation; 
 float fillVar, ColorSpeed; 
-float posX, posY, Speed;  
+float position, Speed;  
 int redVar, blueVar, greenVar; 
 
 boolean alpha; 
-boolean growX = true, growY = true; 
+boolean grow = true; 
 boolean GUI;
 
 int drawMode;
-float borderX, borderY; 
+float border;
 float border1;
 float border2;
 float border3;
 
 void visInit(){
     alpha = false; 
-    growX = true; growY = true; 
+    grow = true; 
     GUI = false; 
-    borderX = 1; 
-    borderY = 1; 
-    border1 = width*.28; 
+    border = 1; 
+    border1 = width*.25; 
     border2 = height*.125; 
     border3 = width*.33;
-    drawMode = 0; posX = 1; posY = 1; 
+    drawMode = 0; position = 1; 
     Speed = 1; ColorSpeed = 1; 
     redVar = 1; blueVar =1; greenVar = 1; 
 }
@@ -31,49 +30,42 @@ void vis(){
 //Draw the Visualizer    
 
   //Check the Postion and Set Speed
-  if((posX > borderX)||(posX < -borderX)){growX = !growX;}
-  if(growX == true){posX += Speed*2;}
-    else{posX -=Speed*2;}
+  if((position > border)||(position < -border)){grow = !grow;}
+  if(grow == true){position += Speed;}
+    else{position -=Speed;}
     
-    if((posY > borderY)||(posY < -borderY)){growY = !growY;}
-  if(growY == true){posY += Speed;}
-    else {posY -=Speed;}
-
   fillVar += ColorSpeed; 
   fill(abs(sin((fillVar/100)/redVar))*250,
        abs(sin((fillVar/100)/greenVar))*250,
        abs(sin((fillVar/100)/blueVar))*250); 
    
-  translate(width/2,height/2);
-  rotateVar += Rotation/10; 
+  translate(width*.5,height*.5);
+  rotateVar += Rotation; 
   rotate(rotateVar); 
   
   if(drawMode == 1){
-    borderX = border1; 
-    borderY = border2;
-    ellipse(posX,posY,posX*.25,posY*.5); 
-    ellipse(posX*.2,posY*.2,posX*.25,posY*.25); 
+    border = border1; 
+    ellipse(position,position,position,position); 
   }
   
   if(drawMode == 2){
-    borderX = border1; 
-    borderY = border1; 
-    ellipse(posX-50,posY-50,posX,posX);
-    ellipse(posX,posX,posX+10,posX+10);
-    ellipse(posX+50,posY+50,posX,posX);
+    border = border2; 
+    ellipse(position-50,position-50,position,position);
+    ellipse(position,position,position+50,position+50);
+    ellipse(position+50,position+50,position,position);
   }
   
   if(drawMode == 3){
-    borderX = border3; 
+    border = border3; 
      for(int b=2; b<20; b+=3){
    int a=b*2;
     beginShape();
-      vertex((posX)*ColorSpeed/12,(posX+a)*ColorSpeed/12);
-      vertex((posX+a)*ColorSpeed/12,(posX+b));
-      vertex((posX+a)*ColorSpeed/12,posX-a);
-      vertex((posX)*ColorSpeed/12,posX-a);
-      vertex((posX-a)*ColorSpeed/12,posX-b);
-      vertex((posX-a)*ColorSpeed/12,posX+b); 
+      vertex((position)*ColorSpeed/12,(position+a)*ColorSpeed/12);
+      vertex((position+a)*ColorSpeed/12,(position+b));
+      vertex((position+a)*ColorSpeed/12,position-a);
+      vertex((position)*ColorSpeed/12,position-a);
+      vertex((position-a)*ColorSpeed/12,position-b);
+      vertex((position-a)*ColorSpeed/12,position+b); 
     endShape(CLOSE);
    }
   }

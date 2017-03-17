@@ -21,7 +21,7 @@ void GUI(){
   
   Group g1 = cp5.addGroup("g1");
   
-  boxSide = int(width/18); 
+  boxSide = int(width/21); 
   sliderHorizonWidth = int(width*.48); 
   sliderHorizonHeight = int(height/22); 
   saveWidth = int(width*.116); 
@@ -30,7 +30,7 @@ void GUI(){
  
 //Control Sliders - Horizontal 
   cp5.addSlider("Rotation")
-     .setPosition(125,0)
+     .setPosition(saveWidth,0)
      .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,6.666*PI)
      .setFont(font)
@@ -40,7 +40,7 @@ void GUI(){
      ;
      
   cp5.addSlider("Speed")
-     .setPosition(125,sliderHorizonHeight)
+     .setPosition(saveWidth,sliderHorizonHeight)
      .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,2)
      .setFont(font)
@@ -49,7 +49,7 @@ void GUI(){
      ;
      
   cp5.addSlider("ColorSpeed")
-     .setPosition(125,2*sliderHorizonHeight)
+     .setPosition(saveWidth,2*sliderHorizonHeight)
      .setSize(sliderHorizonWidth,sliderHorizonHeight)
      .setRange(0,12)
      .setFont(font)
@@ -231,7 +231,7 @@ public void Exit(){
 }
 
 public void Mode() {
-  posX = 0; 
+  position = 0; 
   drawMode += 1;  
   if(drawMode > 3){
     drawMode = 1;

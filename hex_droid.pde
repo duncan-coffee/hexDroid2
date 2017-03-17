@@ -4,7 +4,7 @@
 void setup() {
   //fullScreen(P2D);
   
-  size(1200,800); 
+  size(1280,860); 
   pixelDensity(displayDensity());
   noStroke();
   smooth(); 
